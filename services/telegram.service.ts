@@ -107,7 +107,7 @@ export class TelegramNotificationService {
         return false;
       }
 
-      const result = await response.json();
+      const result = await response.json() as any;
       console.log('Telegram message sent successfully:', result.message_id);
       return true;
     } catch (error) {
