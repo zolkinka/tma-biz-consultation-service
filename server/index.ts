@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { ConsultationService } from '../services/consultation.service';
@@ -8,7 +8,7 @@ import { ConsultationFormData, TelegramConfig } from '../types/consultation';
 // Загружаем переменные окружения
 dotenv.config();
 
-const app = express();
+const app: Express = express();
 const PORT = process.env.CONSULTATION_PORT || 3001;
 
 // Middleware
@@ -136,7 +136,7 @@ app.get('/health', (req, res) => {
 });
 
 // Обработка ошибок
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: Error, req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('Unhandled error:', err);
   res.status(500).json({
     success: false,
